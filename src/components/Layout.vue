@@ -1,11 +1,29 @@
 <template>
   <div class="wrapper">
     <div class="main">
-      <MoveBtn :currentYear="currentYear" :currentMonth="currentMonth" @movePrevMonth="movePrevMonth" @moveNextMonth="moveNextMonth"/>
-      <Calender :currentYear="currentYear" :currentMonth="currentMonth" :currentDate="currentDate" :selectedDay="selectedDay" @selectCell="selectCell($event)"/>
+      <MoveBtn
+        :currentYear="currentYear"
+        :currentMonth="currentMonth"
+        @movePrevMonth="movePrevMonth"
+        @moveNextMonth="moveNextMonth"
+      />
+      <Calender
+        :currentYear="currentYear"
+        :currentMonth="currentMonth"
+        :currentDate="currentDate"
+        :selectedDay="selectedDay"
+        @selectCell="selectCell($event)"
+        :commitDateList="commitDateList"
+      />
     </div>
     <div class="side">
-      <Memo :currentDate="currentDate" :currentMonth="currentMonth" :selectedDay="selectedDay"/>
+      <Memo
+        :currentDate="currentDate"
+        :currentMonth="currentMonth"
+        :selectedDay="selectedDay"
+        :commitDateList="commitDateList"
+        @submit="submit($event)"
+      />
     </div>
   </div>
 </template>
@@ -26,6 +44,7 @@
         currentYear:0,
         currentMonth:0,
         currentDate:0,
+        commitDateList:[],
       }
     },
     created(){
@@ -46,6 +65,21 @@
       },
       transformNumber(number){
         return number < 10 ? `0${number}` : number
+      },
+      submit(e){
+        this.axios.get(`https://api.github.com/repos/${e.account}/${e.repo}/commits`)
+          .then((response) => {
+            this.commitDateList = response.data
+            const tmp = []
+            // tmpに日付を文字列で追加
+            this.commitDateList.map((obj) => {
+              tmp.push(obj.commit.committer.date.slice(0,10))
+            })
+            this.commitDateList = tmp
+          })
+          .catch((e) => {
+            alert(e);
+          });
       }
     }
   }

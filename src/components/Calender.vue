@@ -41,6 +41,9 @@
       selectedDay:{
         require: true
       },
+      commitDateList:{
+        require: true
+      }
     },
     created(){
       // const date = new Date();
@@ -54,15 +57,31 @@
         }
       },
       checkToday(day){
-        return{
-          'today':`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}` == this.today
+        // this.commitDateListをループさせてその要素と`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}`と全て比べる
+        // くらべた中のtrueのものは文字列でcommitDateを返す
+        // ループを抜けた後に
+        // if (`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}` == this.today){
+        //   return "today"
+        // } を実行する
+        // cssにcommitDateのスタイルをかく
+        for(let i = 0; i < this.commitDateList.length; i++) {
+          if ((`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}` === this.commitDateList[i])
+              &&
+              (`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}` === this.today)){
+            return "commitDate today"
+          } else if (`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}` === this.commitDateList[i]){
+            return "commitDate"
+          }
+        }
+        if (`${this.currentYear}-${('0' + this.currentMonth).slice(-2)}-${('0' + day).slice(-2)}` === this.today){
+          return "today"
         }
       },
       selectCell(cellData){
         // this.selectedDay = `${this.currentYear}-${this.transformNumber(this.currentMonth)}-${this.transformNumber(cellData.target.innerText)}`
         // console.log(this.selectedDay)
         this.$emit('selectCell',{clickEvent: cellData})
-      },
+      }
     },
     computed:{
       calendarMake(){
@@ -117,6 +136,14 @@
     border-radius: 50%;
     background-color:#e03616;
     color: #fff !important; 
+    line-height: 24px;     
+  }
+  .commitDate{
+    display:inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: solid 2px green;
     line-height: 24px;     
   }
   .selectedDay{
