@@ -2,7 +2,9 @@
   <div class="back">
     <h2> {{ currentMonth }}月{{ renderDate }}日 </h2>
     <h4>commit message 一覧</h4>
-    <p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p>
+    <div class="box">
+      <p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p>
+    </div>
     <div>
       <form @submit.prevent="submit">
         <p>アカウント名</p>
@@ -55,5 +57,18 @@
 <style scoped>
   h2 {
     margin-top: 70px;
+  }
+  .box {
+    width: 300px;
+    height: 200px;
+    overflow: scroll;
+    border: solid 1px;
+    border-radius: 20px;
+  }
+  .box p {
+    margin-left: 10px;
+  }
+  p {
+    margin: 10px 0 10px 0;
   }
 </style>
