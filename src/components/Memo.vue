@@ -3,7 +3,7 @@
     <h2> {{ currentMonth }}月{{ renderDate }}日 </h2>
     <h4>commit message 一覧</h4>
     <div class="box">
-      <p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p>
+      <a href="https://github.com/Keko-hagari/calender-vuejs" target=”_blank”><p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p></a>
     </div>
     <div>
       <form @submit.prevent="submit">
@@ -60,7 +60,7 @@
   }
   .box {
     width: 300px;
-    height: 200px;
+    height: 250px;
     overflow: scroll;
     border: solid 1px;
     border-radius: 20px;
@@ -70,5 +70,9 @@
   }
   p {
     margin: 10px 0 10px 0;
+  }
+  a {
+    text-decoration: none;
+    color: black;
   }
 </style>
