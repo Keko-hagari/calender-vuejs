@@ -15,7 +15,7 @@
     },
     data() {
       return{
-        loading: false
+        loading: true
       }
     },
     mounted() {
