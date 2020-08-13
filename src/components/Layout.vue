@@ -23,6 +23,7 @@
         :selectedDay="selectedDay"
         :commitDateList="commitDateList"
         @submit="submit($event)"
+        :allDataList="allDataList"
       />
     </div>
   </div>
@@ -45,6 +46,7 @@
         currentMonth:0,
         currentDate:0,
         commitDateList:[],
+        allDataList:[]
       }
     },
     created(){
@@ -69,7 +71,7 @@
       submit(e){
         this.axios.get(`https://api.github.com/repos/${e.account}/${e.repo}/commits`)
           .then((response) => {
-            this.commitDateList = response.data
+            this.allDataList = this.commitDateList = response.data
             const tmp = []
             // tmpに日付を文字列で追加
             this.commitDateList.map((obj) => {

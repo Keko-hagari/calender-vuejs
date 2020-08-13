@@ -1,7 +1,8 @@
 <template>
   <div class="back">
     <h2> {{ currentMonth }}月{{ renderDate }}日 </h2>
-    <p v-for="(item,index) in commitDateList" :key="index"> {{ item }} </p>
+    <h4>commit message 一覧</h4>
+    <p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p>
     <div>
       <form @submit.prevent="submit">
         <p>アカウント名</p>
@@ -26,7 +27,7 @@
       selectedDay:{
         require: true
       },
-      commitDateList:{
+      allDataList:{
         require: true
       }
     },
