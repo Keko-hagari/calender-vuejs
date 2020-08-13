@@ -64,5 +64,16 @@
   width: 30%;
   height: 100%;
 }
+@media screen and (max-width: 767px){
+  .wrapper {
+    flex-direction: column;
+  }
+  .main {
+    width: 100%;
+  }
+  .side {
+    width: 100%;
+  }
+}
 </style>
   

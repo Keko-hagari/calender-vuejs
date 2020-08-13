@@ -95,7 +95,6 @@
  .item div{
     box-sizing: border-box;
     width: 14.28%;
-    height: 48px;
     min-height: 90px;
     padding: 12px 0;
     text-align: center;
@@ -129,5 +128,12 @@
   .holidays{
       color: #e03616;
   }
- 
+  @media screen and (max-width: 767px){
+    .item div span{
+      vertical-align: 0;
+    }
+    .item div {
+      min-height: 0;
+    }
+  }
 </style>
