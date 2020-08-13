@@ -3,7 +3,9 @@
     <h2> {{ currentMonth }}月{{ renderDate }}日 </h2>
     <h4>commit message 一覧</h4>
     <div class="box">
-      <a href="https://github.com/Keko-hagari/calender-vuejs" target=”_blank”><p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p></a>
+      <a href="`https://github.com/${accountName}/${repoName}`" target=”_blank”>
+        <p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p>
+      </a>
     </div>
     <div>
       <form @submit.prevent="submit">
