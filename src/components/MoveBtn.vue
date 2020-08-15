@@ -43,13 +43,13 @@
 .calendar-title{
   text-align: center;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 23px;
 }
 img {
-  width: 14px;
+  width: 16px;
 }
 img:hover {
-  width: 14px;
+  width: 16px;
   transform: scale(1.2,1.2);
 }
 

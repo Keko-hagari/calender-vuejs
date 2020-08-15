@@ -111,6 +111,21 @@
     display: flex;
     flex-wrap: wrap;
   }
+  @keyframes scaleup{
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+  }
+    .item div:hover{
+    box-shadow: 0 0 5px grey;
+    transform: scale(1);
+    animation-name: scaleup;
+    animation-duration: .7s;
+    animation-iteration-count: infinite;
+  }
  .item div{
     box-sizing: border-box;
     width: 14.28%;
@@ -118,7 +133,7 @@
     padding: 12px 0;
     text-align: center;
     cursor:pointer;
-    font-size: 12px;
+    font-size: 16px;
   }
   .item div:nth-of-type(7n-1){
     color: #758efd;
