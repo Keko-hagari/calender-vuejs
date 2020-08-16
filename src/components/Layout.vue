@@ -93,11 +93,11 @@
   justify-content: space-around;
 }
 .main{
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 .side {
-  width: 30%;
+  width: 3%;
   height: 100%;
 }
 @media screen and (max-width: 767px){

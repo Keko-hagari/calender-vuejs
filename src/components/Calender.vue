@@ -133,7 +133,9 @@
     padding: 12px 0;
     text-align: center;
     cursor:pointer;
-    font-size: 16px;
+    font-size: 18px;
+    border: solid 1px white;
+    border-radius: 10px;
   }
   .item div:nth-of-type(7n-1){
     color: #758efd;

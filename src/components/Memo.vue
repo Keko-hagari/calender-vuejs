@@ -12,7 +12,7 @@
             <p v-for="(item,index) in allDataList" :key="index"> {{ item.commit.message}} ({{ item.commit.committer.date.slice(5,10) }}) </p>
           </a>
         </div>
-        <div>
+        <div class="conteiner">
           <form @submit.prevent="submit">
             <p>アカウント名</p>
             <input type="text" v-model="accountName"/>
@@ -66,6 +66,11 @@
 <style scoped>
   h2 {
     margin-top: 70px;
+    text-align: center;
+  }
+  h4 {
+    text-align: center;
+    font-size: 18px;
   }
   .box {
     width: 300px;
@@ -73,12 +78,17 @@
     overflow: scroll;
     border: solid 1px;
     border-radius: 20px;
+    margin: auto;
   }
   .box p {
     margin-left: 10px;
   }
+  .conteiner {
+    margin: 40px 0 0 50px;
+  }
   p {
     margin: 10px 0 10px 0;
+    font-size: 18px;
   }
   a {
     text-decoration: none;
@@ -86,7 +96,7 @@
   }
   #nav-drawer {
     position: relative;
-    padding-left: 370px;
+    padding-left: 10px;
     padding-top: 27px;
   }
 
@@ -167,6 +177,11 @@
   @media screen and (max-width: 767px){
     h2 {
       margin-top: 30px;
+      margin-left: 10px;
+    }
+
+    .conteiner {
+      margin-left: 10px;
     }
 
       #nav-drawer {
