@@ -16,7 +16,7 @@
         :commitDateList="commitDateList"
       />
     </div>
-    <div class="side">
+    <div :class="checkSideFlag">
       <Memo
         :currentDate="currentDate"
         :currentMonth="currentMonth"
@@ -26,6 +26,7 @@
         :allDataList="allDataList"
       />
     </div>
+    <div @click="transformMenu" class="drawer"><img :class="transformBtn" :src="plus"></div>
   </div>
 </template>
  
@@ -33,11 +34,12 @@
   import MoveBtn from './MoveBtn'
   import Calender from './Calender'
   import Memo from './Memo'
+  import Plus from '@/assets/plus.svg' 
   export default {
     components:{
       MoveBtn,
       Calender,
-      Memo
+      Memo,
     },
     data (){
       return {
@@ -46,7 +48,17 @@
         currentMonth:0,
         currentDate:0,
         commitDateList:[],
-        allDataList:[]
+        allDataList:[],
+        openFlag: false,
+        plus: Plus
+      }
+    },
+    computed:{
+      checkSideFlag(){
+        return this.openFlag ? "side open" : "side close"
+      },
+      transformBtn(){
+        return this.openFlag ? "draw-img-close" : "draw-img"
       }
     },
     created(){
@@ -63,7 +75,10 @@
         this.currentYear = this.currentMonth != 1 ? this.currentYear : this.currentYear + 1;
       },
       selectCell(cellData){
-        this.selectedDay = `${this.currentYear}-${this.transformNumber(this.currentMonth)}-${this.transformNumber(cellData.clickEvent.target.innerText)}`
+        if((cellData.clickEvent.target.innerText) != 0){
+          this.selectedDay = `${this.currentYear}-${this.transformNumber(this.currentMonth)}-${this.transformNumber(cellData.clickEvent.target.innerText)}`
+          console.log(cellData.clickEvent.target.innerText)
+        }
       },
       transformNumber(number){
         return number < 10 ? `0${number}` : number
@@ -82,23 +97,54 @@
           .catch((e) => {
             alert(e);
           });
+      },
+      transformMenu(){
+        this.openFlag = !this.openFlag
       }
     }
   }
 </script>
 
 <style scoped>
+.draw-img {
+  height: 30px;
+  transition: all .5s;
+}
+.draw-img-close{
+  height: 30px;
+  transform: rotate(405deg);
+  transition: all .5s;
+}
 .wrapper {
-  display: flex;
-  justify-content: space-around;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 .main{
   width: 100%;
   height: 100%;
 }
 .side {
-  width: 3%;
   height: 100%;
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0 20px;
+  background-color: rgb(88, 53, 94);
+  transition: all .5s;
+}
+.close {
+  right: -500px;
+}
+.open {
+  right: 0;
+}
+.drawer {
+  position:absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 20px;
 }
 @media screen and (max-width: 767px){
   .wrapper {

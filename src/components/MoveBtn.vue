@@ -39,7 +39,7 @@
   }
 </script>
 
-<style scope>
+<style scoped>
 .calendar-title{
   text-align: center;
   margin-top: 20px;

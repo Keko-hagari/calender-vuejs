@@ -111,21 +111,6 @@
     display: flex;
     flex-wrap: wrap;
   }
-  @keyframes scaleup{
-  0% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
-  }
-    .item div:hover{
-    box-shadow: 0 0 5px grey;
-    transform: scale(1);
-    animation-name: scaleup;
-    animation-duration: .7s;
-    animation-iteration-count: infinite;
-  }
  .item div{
     box-sizing: border-box;
     width: 14.28%;
@@ -133,7 +118,7 @@
     padding: 12px 0;
     text-align: center;
     cursor:pointer;
-    font-size: 18px;
+    font-size: 16px;
     border: solid 1px white;
     border-radius: 10px;
   }
@@ -144,24 +129,24 @@
     color:#e03616;
   }
   .item div span{
-    vertical-align: -25px;
+    vertical-align: -20px;
   }
   .today{
     display:inline-block;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color:#e03616;
     color: #fff !important; 
-    line-height: 24px;     
+    padding: 2%;
   }
   .commitDate{
     display:inline-block;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: solid 2px green;
-    line-height: 24px;     
+    padding: 1%;
   }
   .selectedDay{
     display:inline-block;
